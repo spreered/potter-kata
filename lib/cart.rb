@@ -11,7 +11,15 @@ class Cart
     @ordered_items = @ordered_items.delete_if{ |i| i == 0 } # 刪除客戶沒有買的哈利波特集數
 
     while @ordered_items.size > 0      # 當客戶還有書籍還沒計入時
-      if @ordered_items.size == 4
+      if @ordered_items.size == 5
+        total = total + 5 * PRICE * 0.8
+        @ordered_items[0] -= 1
+        @ordered_items[1] -= 1
+        @ordered_items[2] -= 1
+        @ordered_items[3] -= 1
+        @ordered_items[4] -= 1
+        @ordered_items = @ordered_items.delete_if{ |i| i == 0 }
+      elsif @ordered_items.size == 4
         total = total + 4 * PRICE * 0.85
         @ordered_items[0] -= 1
         @ordered_items[1] -= 1
